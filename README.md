@@ -37,12 +37,15 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
 - The categorical variables are encoded using one-hot encoding and merged into the original dataframe.
 <img src="images/original_preprocessed.png" width="500"/>
 
-- Finally, the dataset is separated in the appropriate "y" target and "X" features as well as split into training and testing sets accordingly.
-- The feature data is scaled so that this normalization prevents variations in the magnitudinal scaling between columns.
+- Finally, the resultant dataset is split into "y" target and "X" features and divided into training and testing sets accordingly.
+- The features data is scaled so that normalization prevents variations in the magnitudinal scaling between columns.
 
 ### Compiling, Training, and Evaluating the Model
 
+-
+<img src="images/original_compile.png" width="500"/>
 - How many neurons, layers, and activation functions did you select for your neural network model, and why?
+- 
 - Were you able to achieve the target model performance?
 - What steps did you take to try and increase model performance?
 
