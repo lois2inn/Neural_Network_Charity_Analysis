@@ -31,8 +31,9 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
 - APPLICATION_TYPE, AFFILIATION, CLASSIFICATION, USE_CASE, ORGANIZATION, STATUS, INCOME_AMT, SPECIAL_CONSIDERATIONS and ASK_AMT are considered as potential features that will eventually be encoded, split and normalized as inputs for the model.
 - After the number of unique values for each column are determined, those columns that have more than 10 unique values are considered. The number of data points for each unique value in the column are determined and density plots are drawn to find distribution of values.
   - Any APPLICATION_TYPE that appears fewer than 500 times in the dataset is binned as "other".
+  <img src="images/app_bins.png" width="500"/>
   - Any CLASSIFICATION that appears fewer than 1800 times in the dataset is binned as "other."
-  <img src="images/original_bins.png" width="500"/>
+  <img src="images/class_bins.png" width="500"/>
 
 - The categorical variables are encoded using one-hot encoding and merged into the original dataframe.
 <img src="images/original_preprocessed.png" width="500"/>
@@ -56,7 +57,7 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
   - IS_SUCCESSFUL is still the target for the model during the attempts.
   - STATUS, SPECIAL_CONSIDERATIONS: Each have a 99% dominant value that can create noise. So, these columns along with EIN and NAME are not considered as targets or features. The rest are features for the model.
   - Additionally, INCOME_AMT is binned just like APPLICATION_TYPE and CLASSIFICATION. The output activation function used is Sigmoid. The below table uses these feature considerations for 5 attempts.
-  <table>
+ <table>
   <tr>
     <td><strong>Attempt</strong></td>
     <td>Change</td>
@@ -106,9 +107,15 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
     <td>Not much improvement in accuracy.</td>
   </tr>
 </table>
-
+- Attempt 6 
 
 ## Summary
 
-- Summarize the overall results of the deep learning model. 
-- Include a recommendation for how a different model could solve this classification problem, and explain your recommendation.
+- With over 75% accuracy, the model can correctly classify the points in test data 75% of the time. An applicant with Alphabet Soup has 78% chance of being approved a charitable donation if 
+  - NAME appears more than 10 times.
+  - The APPLICATION_TYPE is one of the following: T3, T4, T5, T6, T7, T8, T10 and T19
+  - The CLASSIFICATION with one of C1000, C1200, C2000, C2100 and C3000
+- More attempts can be made to optimize the model by changing the limits of bins, hiiden layers, neurons, activation function of hidden layers. 
+- As another recommendation to create a binary classification model, a supervised machine learning model such as Random Forest Classifier that can combine a multitude of decision trees to generate a classified output can be built, then the performance of Random Forest classifier can be compared to that of deep learning model. 
+ <img src="images/alt_model.png" width="500"/>
+- The same training set in attempt 6 is used for Random Forest Classifier. Deep learning has over 0.01% improvement in accuracy than Random Forest Classifier.
