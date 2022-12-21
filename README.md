@@ -28,7 +28,7 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
   - IS_SUCCESSFUL—Was the money used effectively  
 - Among the columns of the dataset, **IS_SUCCESSFUL is the target variable** for the model. It contains the binary data that tells if the organizaton used the charity donation effectively or not.
 - The **pre-processing started with dropping EIN and NAME columns because they were considered not beneficial (as targets or features)** in predicting the outcomes of the model. 
-- APPLICATION_TYPE, AFFILIATION, CLASSIFICATION, USE_CASE, ORGANIZATION, STATUS, INCOME_AMT, SPECIAL_CONSIDERATIONS and ASK_AMT are considered as features before optimizing the model. 
+- APPLICATION_TYPE, AFFILIATION, CLASSIFICATION, USE_CASE, ORGANIZATION, STATUS, INCOME_AMT, SPECIAL_CONSIDERATIONS and ASK_AMT are considered as potential features that will eventually be encoded, split and normalized as inputs for the model.
 - After the number of unique values for each column are determined, those columns that have more than 10 unique values are considered. The number of data points for each unique value in the column are determined and density plots are drawn to find distribution of values.
   - Any APPLICATION_TYPE that appears fewer than 500 times in the dataset is binned as "other".
   - Any CLASSIFICATION that appears fewer than 1800 times in the dataset is binned as "other."
@@ -40,12 +40,23 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
 - Finally, the resultant dataset is split into "y" target and "X" features and divided into training and testing sets accordingly.
 - The features data is scaled so that normalization prevents variations in the magnitudinal scaling between columns.
 
-### Compiling, Training, and Evaluating the Model
+### Compiling, Training, and Evaluating the Model. 
 
--
+- A neural network that performs binary classification by including a single neuron with sigmoid activation in the output layer and specifying binary_crossentropy as the loss function is built.
+  - The initial **model has 43 inputs with 2 hidden layers and 1 output layer**. 
+- Since [neural networks with two hidden layers](https://web.archive.org/web/20140721050413/http://www.heatonresearch.com/node/707) can represent functions with any kind of shape, two hidden layers are used in this model. To prevent underfitting with too few neurons and overfitting with excess neurons in hidden layers, the number of neurons < 2*(size of input layer) is used as a rule of thumb. Ultimately, the selection of an architecture for a neural network comes down to trial and error based on target requirements.
+  - The first hidden layer has 43 inputs, 80 (< 2*43=86) neurons.
+  - The second hidden layer has 80 inputs (number of neurons from first layer) and 30 neurons (< 2*80).
+  - The output layer has 30 inputs (number of neurons from the second layer) and 1 neuron (binary classification with sigmoid function to make predictions).
+  - Both first and second **hidden layers are activated using RELU** (Rectified Linear Unit) function. The **output layer is activated using the Sigmoid** function.
+  
+  
+
+
+
 <img src="images/original_compile.png" width="500"/>
 - How many neurons, layers, and activation functions did you select for your neural network model, and why?
-- 
+-
 - Were you able to achieve the target model performance?
 - What steps did you take to try and increase model performance?
 
