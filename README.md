@@ -47,18 +47,14 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
 - Since [neural networks with two hidden layers](https://web.archive.org/web/20140721050413/http://www.heatonresearch.com/node/707) can represent functions with any kind of shape, two hidden layers are used in this model. To prevent underfitting with too few neurons and overfitting with excess neurons in hidden layers, the number of neurons < 2*(size of input layer) is used as a rule of thumb. Ultimately, the selection of an architecture for a neural network comes down to trial and error based on target requirements.
   - The first hidden layer has 43 inputs, 80 (< 2*43=86) neurons.
   - The second hidden layer has 80 inputs (number of neurons from first layer) and 30 neurons (< 2*80).
-  - The output layer has 30 inputs (number of neurons from the second layer) and 1 neuron (binary classification with sigmoid function to make predictions).
-  - Both first and second **hidden layers are activated using RELU** (Rectified Linear Unit) function. The **output layer is activated using the Sigmoid** function.
-  
-  
-
-
-
+  - The output layer has 30 inputs (number of neurons from the second layer) and 1 neuron.
+  - Both first and second **hidden layers are activated using RELU** (Rectified Linear Unit) function. The **output layer is activated using the Sigmoid** function (binary classification using single neuron to make predictions).
 <img src="images/original_compile.png" width="500"/>
-- How many neurons, layers, and activation functions did you select for your neural network model, and why?
--
-- Were you able to achieve the target model performance?
-- What steps did you take to try and increase model performance?
+
+- The model's target accuracy rate is greater than 75%. The model configuration used above has **73.17% accuracy rate and did not fulfill the target accuracy**.
+- To achieve the 75% target accuracy, several attempts are made to optimize the model. 
+  - IS_SUCCESSFUL is still the target for the model during the attempts. 
+  - The output activation function used is Sigmoid.
 
 
 ## Summary
