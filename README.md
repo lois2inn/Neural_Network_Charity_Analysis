@@ -52,9 +52,54 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
 <img src="images/original_compile.png" width="500"/>
 
 - The model's target accuracy rate is greater than 75%. The model configuration used above has **73.17% accuracy rate and did not fulfill the target accuracy**.
-- To achieve the 75% target accuracy, several attempts are made to optimize the model. 
-  - IS_SUCCESSFUL is still the target for the model during the attempts. 
-  - The output activation function used is Sigmoid.
+- To achieve the 75% target accuracy, several attempts are made to optimize the model. IS_SUCCESSFUL is still the target for the model during the attempts. The output activation function used is Sigmoid.
+- Feature/Target considerations:
+  - STATUS, SPECIAL_CONSIDERATIONS: Each have a 99% dominant value that can create noise. So, these columns along with EIN and NAME are not considered as targets or features. The rest are features for the model.
+  - Additionally, INCOME_AMT is binned just like APPLICATION_TYPE and CLASSIFICATION. The below table uses these feature considerations for 5 attempts.
+  <table>
+  <tr>
+    <td><strong>Attempt</strong></td>
+	<td>Change</td>
+    <td><strong>Hidden Layers - (Neurons) - (Activation)</strong></td>
+    <td><strong>Epochs</strong></td>
+    <td><strong>Accuracy Rate</strong></td>
+  </tr>
+  <tr>
+    <td>1</td>
+	  <td>Increased neurons based on input features(38)</td>
+    <td>2-(70,70)-(RELU,RELU)</td>
+    <td>100</td>
+    <td>73.10%</td>
+  </tr>
+   <tr>
+    <td>2</td>
+    <td>Increased Neurons in second layer</td>
+    <td>2-(70,140)-(RELU,RELU)</td>
+    <td>100</td>
+    <td>73.15%</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Added extra hidden layer: Neurons increased</td>
+    <td>3-(70,100,120)-(RELU,RELU,RELU)</td>
+    <td>100</td>
+    <td>73.29%</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Epochs increased</td>
+    <td>3-(70,100,120)-(RELU,RELU,RELU)</td>
+    <td>200</td>
+    <td>72.96%</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Activation function changed</td>
+    <td>3-(70,100,120)-(TANH,TANH,TANH)</td>
+    <td>150</td>
+    <td>73.06%</td>
+  </tr>
+</table>
 
 
 ## Summary
