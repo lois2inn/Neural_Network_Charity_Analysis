@@ -48,28 +48,30 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
   - The first hidden layer has 43 inputs, 80 (< 2*43=86) neurons.
   - The second hidden layer has 80 inputs (number of neurons from first layer) and 30 neurons (< 2*80).
   - The output layer has 30 inputs (number of neurons from the second layer) and 1 neuron.
-  - Both first and second **hidden layers are activated using RELU** (Rectified Linear Unit) function. The **output layer is activated using the Sigmoid** function (binary classification using single neuron to make predictions).
+  - Both first and second **hidden layers are activated using RELU** (Rectified Linear Unit) function. The **output layer is activated using the Sigmoid** function (binary classification using single neuron to make predictions). For compilation, the optimizer used is adam and the loss function is binary_crossentropy.
 <img src="images/original_compile.png" width="500"/>
 
-- The model's target accuracy rate is greater than 75%. The model configuration used above has **73.17% accuracy rate and did not fulfill the target accuracy**.
-- To achieve the 75% target accuracy, several attempts are made to optimize the model. IS_SUCCESSFUL is still the target for the model during the attempts. The output activation function used is Sigmoid.
+- The model's target accuracy rate is greater than 75%. The model configuration used above has **73.17% accuracy rate and did not fulfill the target accuracy**. This is not a satisfying performance to help predict outcome of charity donations. To achieve the 75% target accuracy, several attempts are made to optimize the model. 
 - Feature/Target considerations:
+  - IS_SUCCESSFUL is still the target for the model during the attempts.
   - STATUS, SPECIAL_CONSIDERATIONS: Each have a 99% dominant value that can create noise. So, these columns along with EIN and NAME are not considered as targets or features. The rest are features for the model.
-  - Additionally, INCOME_AMT is binned just like APPLICATION_TYPE and CLASSIFICATION. The below table uses these feature considerations for 5 attempts.
+  - Additionally, INCOME_AMT is binned just like APPLICATION_TYPE and CLASSIFICATION. The output activation function used is Sigmoid. The below table uses these feature considerations for 5 attempts.
   <table>
   <tr>
     <td><strong>Attempt</strong></td>
-	<td>Change</td>
+    <td>Change</td>
     <td><strong>Hidden Layers - (Neurons) - (Activation)</strong></td>
     <td><strong>Epochs</strong></td>
     <td><strong>Accuracy Rate</strong></td>
+    <td><strong>Observation</strong></td>
   </tr>
   <tr>
     <td>1</td>
-	  <td>Increased neurons based on input features(38)</td>
+    <td>Increased neurons based on input features(38)</td>
     <td>2-(70,70)-(RELU,RELU)</td>
     <td>100</td>
     <td>73.10%</td>
+    <td>Less inputs to model. Accuracy decreased slightly(0.07%) compared to initial model.</td>
   </tr>
    <tr>
     <td>2</td>
@@ -77,6 +79,7 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
     <td>2-(70,140)-(RELU,RELU)</td>
     <td>100</td>
     <td>73.15%</td>
+    <td>Not much improvement in accuracy.</td>
   </tr>
   <tr>
     <td>3</td>
@@ -84,6 +87,7 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
     <td>3-(70,100,120)-(RELU,RELU,RELU)</td>
     <td>100</td>
     <td>73.29%</td>
+    <td>Slight improvement(0.14%) in accuracy.</td>
   </tr>
   <tr>
     <td>4</td>
@@ -91,6 +95,7 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
     <td>3-(70,100,120)-(RELU,RELU,RELU)</td>
     <td>200</td>
     <td>72.96%</td>
+    <td>Accuracy decreased.</td>
   </tr>
   <tr>
     <td>5</td>
@@ -98,6 +103,7 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
     <td>3-(70,100,120)-(TANH,TANH,TANH)</td>
     <td>150</td>
     <td>73.06%</td>
+    <td>Not much improvement in accuracy.</td>
   </tr>
 </table>
 
