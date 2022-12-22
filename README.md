@@ -32,6 +32,7 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
 - After the number of unique values for each column are determined, those columns that have more than 10 unique values are considered. The number of data points for each unique value in the column are determined and density plots are drawn to find distribution of values.
   - Any APPLICATION_TYPE that appears fewer than 500 times in the dataset is binned as "other".
   <img src="images/app_bins.png" width="500"/>
+  
   - Any CLASSIFICATION that appears fewer than 1800 times in the dataset is binned as "other."
   <img src="images/class_bins.png" width="500"/>
 
@@ -60,11 +61,11 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
  <table>
   <tr>
     <td><strong>Attempt</strong></td>
-    <td>Change</td>
+    <td><strong>Change</strong></td>
     <td><strong>Hidden Layers - (Neurons) - (Activation)</strong></td>
     <td><strong>Epochs</strong></td>
     <td><strong>Accuracy Rate</strong></td>
-    <td><strong>Observation</strong></td>
+    <td><strong>Observation w.r.t. initial model</strong></td>
   </tr>
   <tr>
     <td>1</td>
@@ -72,11 +73,11 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
     <td>2-(70,70)-(RELU,RELU)</td>
     <td>100</td>
     <td>73.10%</td>
-    <td>Less inputs to model. Accuracy decreased slightly(0.07%) compared to initial model.</td>
+    <td>Less inputs to model. Accuracy decreased slightly(0.07%).</td>
   </tr>
    <tr>
     <td>2</td>
-    <td>Increased Neurons in second layer</td>
+    <td>Increased neurons in second layer</td>
     <td>2-(70,140)-(RELU,RELU)</td>
     <td>100</td>
     <td>73.15%</td>
@@ -84,11 +85,11 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
   </tr>
   <tr>
     <td>3</td>
-    <td>Added extra hidden layer: Neurons increased</td>
+    <td>Added extra hidden layer; neurons increased</td>
     <td>3-(70,100,120)-(RELU,RELU,RELU)</td>
     <td>100</td>
     <td>73.29%</td>
-    <td>Slight improvement(0.14%) in accuracy.</td>
+    <td>Slight improvement(0.12%) in accuracy.</td>
   </tr>
   <tr>
     <td>4</td>
@@ -104,18 +105,34 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
     <td>3-(70,100,120)-(TANH,TANH,TANH)</td>
     <td>150</td>
     <td>73.06%</td>
-    <td>Not much improvement in accuracy.</td>
+    <td>Decrease in accuracy.</td>
   </tr>
 </table>
-- Attempt 6 
+
+- Another attempt is made to revisit the feature allocation. The target variable is IS_SUCCESSFUL. EIN, STATUS, SPECIAL_CONSIDERATIONS are neither considered targets nor features. NAME column is considered as a feature this time. All NAMEs that took donation less than 10 times are binned as 'Other'. The model has 263 input features with 3 hidden layers using RELU as activation function over 100 epochs. An Accuracy rate of over 78% is achieved. A 5% improvement in accuracy over the initial model is observed.
+<table>
+  <tr>
+    <td><strong>Attempt</strong></td>
+    <td><strong>Hidden Layers - (Neurons) - (Activation)</strong></td>
+    <td><strong>Epochs</strong></td>
+    <td><strong>Accuracy Rate</strong></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>3-(130,30,10)-(RELU,RELU,RELU)</td>
+    <td>100</td>
+    <td>78.48%</td>
+  </tr>
+</table>
+<img src="images/attempt_six.png" width="500"/>
 
 ## Summary
 
 - With over 75% accuracy, the model can correctly classify the points in test data 75% of the time. An applicant with Alphabet Soup has 78% chance of being approved a charitable donation if 
   - NAME appears more than 10 times.
-  - The APPLICATION_TYPE is one of the following: T3, T4, T5, T6, T7, T8, T10 and T19
-  - The CLASSIFICATION with one of C1000, C1200, C2000, C2100 and C3000
-- More attempts can be made to optimize the model by changing the limits of bins, hiiden layers, neurons, activation function of hidden layers. 
-- As another recommendation to create a binary classification model, a supervised machine learning model such as Random Forest Classifier that can combine a multitude of decision trees to generate a classified output can be built, then the performance of Random Forest classifier can be compared to that of deep learning model. 
+  - The APPLICATION_TYPE is one of the following: T3, T4, T5, T6, T7, T8, T10 and T19.
+  - The CLASSIFICATION with one of C1000, C1200, C2000, C2100 and C3000.
+- More attempts can be made to optimize the model by changing the limits of bins, hidden layers, neurons, activation function of hidden layers. 
+- As a recommendation to create a binary classification model, a supervised machine learning model such as Random Forest Classifier that can combine a multitude of decision trees to generate a classified output can be built, then the performance of Random Forest classifier can be compared to that of deep learning model. 
  <img src="images/alt_model.png" width="500"/>
-- The same training set in attempt 6 is used for Random Forest Classifier. Deep learning has over 0.01% improvement in accuracy than Random Forest Classifier.
+- The same training set in attempt 6 is used for Random Forest Classifier. Deep learning has over 1.68% increase in accuracy than Random Forest Classifier.
