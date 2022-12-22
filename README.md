@@ -31,13 +31,13 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
 - APPLICATION_TYPE, AFFILIATION, CLASSIFICATION, USE_CASE, ORGANIZATION, STATUS, INCOME_AMT, SPECIAL_CONSIDERATIONS and ASK_AMT are considered as potential features that will eventually be encoded, split and normalized as inputs for the model.
 - After the number of unique values for each column are determined, those columns that have more than 10 unique values are considered. The number of data points for each unique value in the column are determined and density plots are drawn to find distribution of values.
   - Any APPLICATION_TYPE that appears fewer than 500 times in the dataset is binned as "other".
-  <img src="images/app_bins.png" width="500"/>
+  <img src="images/app_bins.png" width="300"/>
   
   - Any CLASSIFICATION that appears fewer than 1800 times in the dataset is binned as "other."
-  <img src="images/class_bins.png" width="500"/>
+  <img src="images/class_bins.png" width="300"/>
 
 - The categorical variables are encoded using one-hot encoding and merged into the original dataframe.
-<img src="images/original_preprocessed.png" width="500"/>
+<img src="images/original_preprocessed.png" width="600"/>
 
 - Finally, the resultant dataset is split into "y" target and "X" features and divided into training and testing sets accordingly.
 - The features data is scaled so that normalization prevents variations in the magnitudinal scaling between columns.
@@ -51,7 +51,7 @@ Beks is a data scientist for non profit foundation Alphabet Soup, which is dedic
   - The second hidden layer has 80 inputs (number of neurons from first layer) and 30 neurons (< 2*80).
   - The output layer has 30 inputs (number of neurons from the second layer) and 1 neuron.
   - Both first and second **hidden layers are activated using RELU** (Rectified Linear Unit) function. The **output layer is activated using the Sigmoid** function (binary classification using single neuron to make predictions). For compilation, the optimizer used is adam and the loss function is binary_crossentropy.
-<img src="images/original_compile.png" width="500"/>
+<img src="images/original_compile.png" width="600"/>
 
 - The model's target accuracy rate is greater than 75%. The model configuration used above has **73.17% accuracy rate and did not fulfill the target accuracy**. This is not a satisfying performance to help predict outcome of charity donations. To achieve the 75% target accuracy, several attempts are made to optimize the model. 
 - Feature/Target considerations:
